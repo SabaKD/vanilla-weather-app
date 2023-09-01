@@ -23,12 +23,14 @@ function displayTemprature(response){
     let humidityElement = document.querySelector("#humidity");
     let windElement = document.querySelector("#wind");
     let dateElement = document.querySelector("#date");
+    let iconElement = document.querySelector("#icon");
     tempratureElement.innerHTML = Math.round(response.data.temperature.current);
     cityElement.innerHTML = response.data.city;
     descriptionElement.innerHTML = response.data.condition.description;
     humidityElement.innerHTML = `Humidity : ${response.data.temperature.humidity}%`;
     windElement.innerHTML = `Wind : ${Math.round(response.data.wind.speed)} km/h`;
     dateElement.innerHTML = formatDate(response.data.time * 1000);
+    iconElement.setAttribute("src",response.data.condition.icon_url);
 
 }
 
