@@ -1,13 +1,14 @@
 function formatDate(timestamp){
     let date = new Date(timestamp);
     let hours = date.getHours();
+    if (hours< 10){
+        hours = `0 ${hours}`;
+    }
     let minutes = date.getMinutes();
     if (minutes< 10){
         minutes = `0 ${minutes}`;
     }
-    if (hours< 10){
-        hours = `0 ${hours}`;
-    }
+    
     let day = date.getDay();
     let days = ["Sunday", "Monday", "Tuesday", "Wednesay", "Thursday", "Friday", "Saturday"];
     return `Last updated: ${days[day]} ${hours}:${minutes}`
@@ -16,7 +17,6 @@ function formatDate(timestamp){
 
 
 function displayTemprature(response){
-    console.log(response.data.time);
     let tempratureElement = document.querySelector("#temprature");
     let cityElement = document.querySelector("#city");
     let descriptionElement = document.querySelector("#description");
