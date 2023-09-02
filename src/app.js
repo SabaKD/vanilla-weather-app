@@ -15,7 +15,6 @@ function formatDate(timestamp){
 
 }
 function formatDay(timestamp){
-    console.log(new Date(timestamp));
     let date = new Date(timestamp);
     let day = date.getDay();
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -23,7 +22,6 @@ function formatDay(timestamp){
 
 }
 function displayForecast(response){
-    console.log(response.data.daily);
     let forecast = response.data.daily;
     let forecastElement = document.querySelector("#weather-forecast");
     let forecastHtml = `<div class="row">`;
@@ -77,32 +75,13 @@ function handleSubmit(event){
     let cityInputElement = document.querySelector("#city-input");
     search(cityInputElement.value);
 }
-function showFahrenheitTemperature(event){
-    event.preventDefault();
-    let temperatureElement = document.querySelector("#temperature");
-    celciusLink.classList.remove("active");
-    fahrenheitLink.classList.add("active");
-    let fahrenheitTemperature = (celciusTemperature * 9) / 5 + 32;
-    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-function showCelciusTemperature(event){
-    event.preventDefault();
-    celciusLink.classList.add("active");
-    fahrenheitLink.classList.remove("active");
-    let temperatureElement = document.querySelector("#temperature");
-    temperatureElement.innerHTML = Math.round(celciusTemperature);
 
-}
 
 let celciusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemperature); 
 
-let celciusLink = document.querySelector("#celcius-link");
-celciusLink.addEventListener("click", showCelciusTemperature); 
 
 search("Lisbon");
